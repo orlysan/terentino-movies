@@ -23,9 +23,8 @@ class App extends React.Component{
 
   render(){
   return   <HashRouter>
-      <Route >
-        <NavbarMovies />
-      </Route>
+        
+      <NavbarMovies />
       
       <Route exact path = "/">
           <Home></Home>
