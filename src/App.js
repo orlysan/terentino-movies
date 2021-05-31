@@ -10,6 +10,7 @@ import Movie from './pages/Movie';
 import NewestMovies from './pages/NewestMovies';
 import SearchResult from './pages/SearchResult';
 import { HashRouter, Route} from 'react-router-dom';
+import NavbarMovies from './components/NavbarMovies';
 
 
 class App extends React.Component{
@@ -22,6 +23,9 @@ class App extends React.Component{
 
   render(){
   return   <HashRouter>
+        
+      <NavbarMovies />
+      
       <Route exact path = "/">
           <Home></Home>
       </Route>
@@ -34,7 +38,7 @@ class App extends React.Component{
       <Route exact path = "/highest">
           <Highest></Highest>
       </Route>
-      <Route exact path = "/movie">
+      <Route exact path = "/movie/:id">
           <Movie></Movie>
       </Route>
       <Route exact path = "/newest-movies">

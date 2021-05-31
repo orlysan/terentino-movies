@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, ListGroup } from 'react-bootstrap';
 import { API_KEY, TARANTINO_ID } from '../constants';
+import { withRouter } from "react-router";
 
 class Search extends React.Component {
     constructor(props) {
@@ -30,7 +31,9 @@ class Search extends React.Component {
                             name: movie.original_title,
                             id: movie.id,
                             poster: `https://www.themoviedb.org/t/p/w500${movie.poster_path}`,
-                            release_date: movie.release_date
+                            release_date: movie.release_date,
+                            popularity: movie.popularity
+
                         }
                     })
                     this.setState(
@@ -50,13 +53,25 @@ class Search extends React.Component {
             console.log("movie", movie.name);
             return (<ListGroup.Item
                 action key={movie.id}
-                onClick={() => { this.props.onResultSelected(movie.id) }}
-            >{movie.name}</ListGroup.Item>)
+                onClick={() => { this.onResultSelected(movie.id, movie.name) }}>
+                <div className="movie-tab">
+                    <img src={movie.poster} height="60px" />
+                    <div className="movie-name-tab">{movie.name}</div>
+                </div>
+            </ListGroup.Item>)
         })
 
         this.setState({
             filterMovies: filterMovies
         })
+    }
+
+    onResultSelected = (id, name) => {
+        this.setState({
+            name: name,
+            filterMovies: ""
+        })
+        window.location.href = `#movie/${id}`
     }
 
     render() {
@@ -66,14 +81,15 @@ class Search extends React.Component {
             <Form.Group>
                 <Form.Control
                     type="text"
-                    value={this.state.search}
+                    value={this.state.name}
                     placeholder="Search for a movie"
                     onChange={(e) => { this.onSearchChanged(e.target.value) }} />
-                <ListGroup>
+                <ListGroup className="movies-search">
                     {this.state.filterMovies}
                 </ListGroup>
             </Form.Group>
         )
     }
+
 }
-export default Search
+export default withRouter(Search)
