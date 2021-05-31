@@ -9,15 +9,16 @@ import './MovieCard.css';
 // movYear- year
 // movLink - link address of the details
 // movImgSrc- img src
-// second props: object movStyle with following fields:
-// height: pixels. default: 600px
-// weight: pixels. default: 400px
-// color: background color. default #c2d9ff
+// second props: color- background color. default #c2d9ff
 export default class MovieCard extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
-        const height = this.props.movStyle.height || "600px";
-        const width = this.props.movStyle.width || "400px";
-        const color = this.props.movStyle.color || "#c2d9ff";
+        const height = "300px";
+        const  width = "210px";
+        const color = this.props.color || "#c2d9ff";
+ 
         const src = this.props.movDetails.movImgSrc;
         const name = this.props.movDetails.movName;
         const rate = this.props.movDetails.movRate;
@@ -33,7 +34,7 @@ export default class MovieCard extends React.Component {
                     style={{height, width}}
                 >
                     <FrontSide style={{height, width, backgroundColor: color}}>
-                        <div style={{height: "90%"}}>
+                        <div style={{height: "85%"}}>
                             <img src={src} alt=""></img>
                         </div>
                         <p>
@@ -49,7 +50,7 @@ export default class MovieCard extends React.Component {
                     <BackSide
                     style={{height, width, backgroundColor: color}}
                     >
-                        <div style={{height: "90%"}}>
+                        <div style={{height: "85%"}}>
                             <img src={src} alt="" style={{opacity: "0.6"}}></img>
                         </div>
                         <p>
