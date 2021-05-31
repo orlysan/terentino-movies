@@ -10,6 +10,7 @@ import Movie from './pages/Movie';
 import NewestMovies from './pages/NewestMovies';
 import SearchResult from './pages/SearchResult';
 import { HashRouter, Route} from 'react-router-dom';
+import NavbarMovies from './components/NavbarMovies';
 
 
 class App extends React.Component{
@@ -22,6 +23,10 @@ class App extends React.Component{
 
   render(){
   return   <HashRouter>
+      <Route >
+        <NavbarMovies />
+      </Route>
+      
       <Route exact path = "/">
           <Home></Home>
       </Route>
