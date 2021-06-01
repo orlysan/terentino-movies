@@ -62,7 +62,7 @@ class Search extends React.Component {
                 action key={movie.id}
                 onClick={() => { this.onResultSelected(movie.id, movie.name) }}>
                 <div className="movie-tab">
-                    <img className="image-tab" src={poster} height="60px" />
+                    <img className="image-tab" src={poster}/>
                     <div className="movie-name-tab">{movie.name}</div>
                 </div>
             </ListGroup.Item>)
@@ -75,7 +75,7 @@ class Search extends React.Component {
 
     onResultSelected = (id, name) => {
         this.setState({
-            name: name,
+            name: "",
             filteredMovies: ""
         })
         window.location.href = `#movie/${id}`
