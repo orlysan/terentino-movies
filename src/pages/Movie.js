@@ -1,7 +1,9 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { withRouter } from "react-router";
+import { API_KEY, API_KEY_OMDB } from "../constants";
 import "./Movie.css"
+
 class Movie extends React.Component{
     constructor(props){
         super(props);
@@ -14,7 +16,7 @@ class Movie extends React.Component{
     //
     componentDidMount = () => {
 
-        fetch(`https://api.themoviedb.org/3/movie/${this.id}?api_key=471a32c8fb5a40f61dbbe1e382bb1a79&language=en-US&append_to_response=videos`)
+        fetch(`https://api.themoviedb.org/3/movie/${this.id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`)
         .then((res) => res.json())
         .then((tmdbData) => {
             const imdbId = tmdbData.imdb_id;
@@ -32,7 +34,7 @@ class Movie extends React.Component{
             return imdbId;
         })
          .then( (imdbId) => {
-            fetch(`http://www.omdbapi.com/?apikey=bdf00e81&i=${imdbId}`)
+            fetch(`http://www.omdbapi.com/?apikey=${API_KEY_OMDB}&i=${imdbId}`)
             .then(res => res.json())
             .then( (omdbData) => {
                 const omdbObj ={
