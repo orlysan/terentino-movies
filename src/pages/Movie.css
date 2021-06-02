@@ -1,0 +1,22 @@
+.iframe-container{
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; 
+    height: 0;
+}
+.iframe-container iframe{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.p-movie .jumbotron {
+    background-color:#f4ce11 ;
+}
+.p-movie  dd  {
+    color:#f47a11;
+}
+.p-movie  dt{
+    color:#f47a11;
+}
