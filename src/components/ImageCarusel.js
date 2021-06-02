@@ -14,15 +14,15 @@ class ImageCarusel extends React.Component {
 
     componentDidMount() {
         getDiscoveryAPI({ sort_by: "popularity" }).then(movies => {
-           const moviePosters = movies.results.filter(movie=> movie.backdrop_path)
+            const moviePosters = movies.results.filter(movie => movie.backdrop_path)
             const chosenMovies = []
             for (let index = 0; index < 5; index++) {
                 console.log("results", movies.results[index].backdrop_path)
                 chosenMovies.push(
                     <Carousel.Item>
-                        <img 
+                        <img
                             className="d-block images"
-                            src={`https://www.themoviedb.org/t/p/w500${moviePosters[index].backdrop_path}`}
+                            src={`https://www.themoviedb.org/t/p/w1280${moviePosters[index].backdrop_path}`}
                             alt="Second slide"
                         />
 
@@ -43,11 +43,9 @@ class ImageCarusel extends React.Component {
     render() {
 
         return (
-            <Container>
-                <Carousel>
-                    {this.state.topMovies}
-                </Carousel>
-            </Container>
+            <Carousel>
+                {this.state.topMovies}
+            </Carousel>
         )
 
 
