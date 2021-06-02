@@ -11,17 +11,45 @@ import NewestMovies from './pages/NewestMovies';
 import SearchResult from './pages/SearchResult';
 import { HashRouter, Route} from 'react-router-dom';
 import NavbarMovies from './components/NavbarMovies';
+import Paginator from './components/Paginator';
+
 
 
 class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-
+        cards : ['a','b','c','d','e','f','g','h','i','j','k','l','m',
+            'n','o','p','q','r','s','t','u','v','w','x','y','z','a','b','c','d','e','f','g','h','i','j','k','l','m',
+            'n','o','p','q','r','s','t','u','v','w','x','y','z'],
+            currentPage : 1,
+            cardsPerPages : 10
     }
   }
 
+  //change page
+  choosePage = (page) => {
+    this.setState({
+        currentPage: page,
+    })
+    }
+
+   
   render(){
+
+    //paginator 
+    const { cards , cardsPerPages} = this.state
+
+    const renderCard = cards.map((card, index) => {
+        return <p key={index}>{card}</p>
+    })
+    
+    //get current cards
+    const indexOfLastCard = this.state.currentPage * cardsPerPages;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPages ;
+    const currentCards = renderCard.slice(indexOfFirstCard, indexOfLastCard);
+
+    
   return   <HashRouter>
         
       <NavbarMovies />
@@ -47,6 +75,12 @@ class App extends React.Component{
       <Route exact path = "/search-result">
           <SearchResult></SearchResult>
       </Route>
+      {currentCards}
+      <Paginator 
+            numOfPages ={Math.ceil(this.state.cards.length / this.state.cardsPerPages)}
+            currentPage = {this.state.currentPage}
+            choosePage = {this.choosePage}
+      />
     </HashRouter>
   }
 }
