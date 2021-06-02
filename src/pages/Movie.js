@@ -25,7 +25,7 @@ class Movie extends React.Component{
             image: tmdbData.poster_path,
             tmdbRaiting: tmdbData.vote_average,
             tagline: tmdbData.tagline,
-            trailer : tmdbData.videos.results[0].key
+            trailer : (tmdbData.videos&&tmdbData.videos.results[0]&& tmdbData.videos.results[0].key)? "tmdbData.videos.results[0].key" : "6V1Sm0WCtHU"
         }
             console.log(tmdbObj)
             this.setState({
@@ -41,9 +41,9 @@ class Movie extends React.Component{
                     actors: omdbData.Actors,
                     writer : omdbData.Writer,
                     director : omdbData.Director, 
-                    rottenTomatoes : omdbData.Ratings[1].Value,
+                    rottenTomatoes : (omdbData.Ratings[1]&&omdbData.Ratings[1].Value)?"omdbData.Ratings[1].Value":"No raiting",
                     imdbRating : omdbData.imdbRating,
-                    metacritic : omdbData.Ratings[2].Value,
+                    metacritic :  (omdbData.Ratings[2]&&omdbData.Ratings[2].Value)?"omdbData.Ratings[2].Value":"No raiting",
                     genres : omdbData.Genre,
                     language : omdbData.Language,
                     plot : omdbData.Plot,
