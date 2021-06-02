@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { withRouter } from "react-router";
-import { API_KEY, API_KEY_OMDB } from "../constants";
+import { API_KEY, API_KEY_OMDB, PROTECT_TRAILER, TARANTINO_IMAGE } from "../constants";
 import "./Movie.css"
 
 class Movie extends React.Component{
@@ -22,10 +22,10 @@ class Movie extends React.Component{
             const imdbId = tmdbData.imdb_id;
             const tmdbObj ={
             title: tmdbData.original_title,
-            image: tmdbData.poster_path,
+            image: (tmdbData.poster_path)?tmdbData.poster_path:TARANTINO_IMAGE,
             tmdbRaiting: tmdbData.vote_average,
             tagline: tmdbData.tagline,
-            trailer : tmdbData.videos.results[0].key
+            trailer : (tmdbData.videos&&tmdbData.videos.results[0]&& tmdbData.videos.results[0].key)? tmdbData.videos.results[0].key : PROTECT_TRAILER
         }
             console.log(tmdbObj)
             this.setState({
@@ -38,17 +38,17 @@ class Movie extends React.Component{
             .then(res => res.json())
             .then( (omdbData) => {
                 const omdbObj ={
-                    actors: omdbData.Actors,
-                    writer : omdbData.Writer,
-                    director : omdbData.Director, 
-                    rottenTomatoes : omdbData.Ratings[1].Value,
+                    actors: (omdbData.Actors)?omdbData.Actors: "unknown",
+                    writer : (omdbData.Writer)?omdbData.Writer: "unknown",
+                    director : (omdbData.Director)?omdbData.Director: "unknown", 
+                    rottenTomatoes : (omdbData.Ratings[1]&&omdbData.Ratings[1].Value)?omdbData.Ratings[1].Value:"No raiting",
                     imdbRating : omdbData.imdbRating,
-                    metacritic : omdbData.Ratings[2].Value,
-                    genres : omdbData.Genre,
-                    language : omdbData.Language,
+                    metacritic :  (omdbData.Ratings[2]&&omdbData.Ratings[2].Value)?omdbData.Ratings[2].Value:"No raiting",
+                    genres : (omdbData.Genre)?omdbData.Genre: "unknown",
+                    language : (omdbData.Language)?omdbData.Language: "unknown",
                     plot : omdbData.Plot,
-                    year: omdbData.Year,
-                    runTime: omdbData.Runtime,
+                    year: (omdbData.Year)?omdbData.Year: "unknown",
+                    runTime:(omdbData.Runtime)?omdbData.Runtime: "unknown",
                 }
                 console.log(omdbObj);
                 this.setState({
