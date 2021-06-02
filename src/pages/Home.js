@@ -58,6 +58,7 @@ class Home extends React.Component{
                 <div className="custom-courusel">
                     <ImageCarusel/>
                 </div>
+                </div>
                 <div className="custom-gallery">
                     <Gallery
                      cards={this.state.cards}
@@ -66,7 +67,7 @@ class Home extends React.Component{
                 <div className="custom-paginator">
                     PAGINETOR
                 </div>    
-                </div>
+                
             </div>
         )
     }
