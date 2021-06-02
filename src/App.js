@@ -38,7 +38,7 @@ class App extends React.Component{
       <Route exact path = "/highest">
           <Highest></Highest>
       </Route>
-      <Route exact path = "/movie">
+      <Route exact path = "/movie/:id">
           <Movie></Movie>
       </Route>
       <Route exact path = "/newest-movies">
