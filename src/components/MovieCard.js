@@ -19,7 +19,7 @@ export default class MovieCard extends React.Component {
         const  width = "210px";
         const color = this.props.color || "#c2d9ff";
  
-        const src = this.props.movDetails.movImgSrc;
+        const src = 'https://image.tmdb.org/t/p/w500/' +this.props.movDetails.movImgSrc;
         const name = this.props.movDetails.movName;
         const rate = this.props.movDetails.movRate;
         const year = this.props.movDetails.movYear;
@@ -56,11 +56,11 @@ export default class MovieCard extends React.Component {
                         <p>
                             {name}
                         </p>
-                        <Link to={link}>
+                        <a href = {`#/movie/${link}`}>
                         <button className="detailed-button" style={{backgroundColor: color}}>
                                 Details
                                 </button>
-                        </Link>
+                        </a>
                         
                     </BackSide>
                 </Flippy>
