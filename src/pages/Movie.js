@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { withRouter } from "react-router";
-import { API_KEY, API_KEY_OMDB } from "../constants";
+import { API_KEY, API_KEY_OMDB, PROTECT_POSTER, PROTECT_TRAILER } from "../constants";
 import "./Movie.css"
 
 class Movie extends React.Component{
@@ -22,10 +22,10 @@ class Movie extends React.Component{
             const imdbId = tmdbData.imdb_id;
             const tmdbObj ={
             title: tmdbData.original_title,
-            image: (tmdbData.poster_path)?tmdbData.poster_path:"/1gjcpAa99FAOWGnrUvHEXXsRs7o.jpg",
+            image: (tmdbData.poster_path)?tmdbData.poster_path:PROTECT_POSTER,
             tmdbRaiting: tmdbData.vote_average,
             tagline: tmdbData.tagline,
-            trailer : (tmdbData.videos&&tmdbData.videos.results[0]&& tmdbData.videos.results[0].key)? tmdbData.videos.results[0].key : "6V1Sm0WCtHU"
+            trailer : (tmdbData.videos&&tmdbData.videos.results[0]&& tmdbData.videos.results[0].key)? tmdbData.videos.results[0].key : PROTECT_TRAILER
         }
             console.log(tmdbObj)
             this.setState({
