@@ -16,7 +16,7 @@ class ImageCarusel extends React.Component {
     }
 
     get5TopMovies = () => {
-        getDiscoveryAPI({ sort_by: "popularity" }).then(movies => {
+        getDiscoveryAPI({ sort_by: "popularity.desc" }).then(movies => {
             const moviePosters = movies.results.filter(movie => movie.backdrop_path)
             const chosenMovies = []
             for (let index = 0; index < 5; index++) {
