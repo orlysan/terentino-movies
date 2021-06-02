@@ -31,7 +31,7 @@ class Home extends React.Component{
             const page = tmdbData.page
             const tmdbCards = moviesToCards (tmdbData.results)
         
-            console.log(tmdbCards)
+            
             this.setState({
                 cards: tmdbCards,
                 
