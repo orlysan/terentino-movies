@@ -11,3 +11,12 @@
     width: 100%;
     height: 100%;
 }
+.p-movie .jumbotron {
+    background-color:#f4ce11 ;
+}
+.p-movie  dd  {
+    color:White;
+}
+.p-movie  dt{
+    color:white;
+}

@@ -65,12 +65,12 @@ class Movie extends React.Component{
             template = (
                         <div>
                             <div className="jumbotron">
-                                <h1 className="display-4 text-center">{this.state.tmdbInfo.title}</h1>
-                                <p className="lead text-center">{this.state.tmdbInfo.tagline}</p>
+                                <h1 className="display-3 text-center">{this.state.tmdbInfo.title}</h1>
+                                <p className="display-6 text-center">{this.state.tmdbInfo.tagline}</p>
                                 <hr className="my-3"/>
-                                <p>Directed by: {this.state.omdbInfo.director} </p>
+                                <p className=" lead text-center">Directed by: {this.state.omdbInfo.director} </p>
                             </div>
-                            <div className="container ">
+                            <div className="container">
                                 <Row>
                                     <Col lg={6} className="text-center">
                                         <img src={`https://image.tmdb.org/t/p/w400${this.state.tmdbInfo.image}`} alt={this.state.tmdbInfo.title}/>
