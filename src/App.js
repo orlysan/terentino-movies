@@ -11,6 +11,7 @@ import NewestMovies from './pages/NewestMovies';
 import SearchResult from './pages/SearchResult';
 import { HashRouter, Route} from 'react-router-dom';
 import NavbarMovies from './components/NavbarMovies';
+import ImageCarusel from './components/ImageCarusel';
 
 
 class App extends React.Component{
@@ -22,32 +23,9 @@ class App extends React.Component{
   }
 
   render(){
-  return   <HashRouter>
-        
-      <NavbarMovies />
+  return  <ImageCarusel>
       
-      <Route exact path = "/">
-          <Home></Home>
-      </Route>
-      <Route exact path = "/about">
-          <About></About>
-      </Route>
-      <Route exact path = "/advanced-search">
-          <AdvancedSearch></AdvancedSearch>
-      </Route>
-      <Route exact path = "/highest">
-          <Highest></Highest>
-      </Route>
-      <Route exact path = "/movie/:id">
-          <Movie></Movie>
-      </Route>
-      <Route exact path = "/newest-movies">
-          <NewestMovies></NewestMovies>
-      </Route>
-      <Route exact path = "/search-result">
-          <SearchResult></SearchResult>
-      </Route>
-    </HashRouter>
+  </ImageCarusel>
   }
 }
 
