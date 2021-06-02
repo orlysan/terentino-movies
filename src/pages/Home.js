@@ -54,8 +54,9 @@ class Home extends React.Component{
                     <hr className="my-4"/>
                     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>  
                 </div>
+                <div className="container">
                 <div className="custom-courusel">
-                    {/* <ImageCarusel/> */}
+                    <ImageCarusel/>
                 </div>
                 <div className="custom-gallery">
                     <Gallery
@@ -64,7 +65,8 @@ class Home extends React.Component{
                 </div>
                 <div className="custom-paginator">
                     PAGINETOR
-                </div>           
+                </div>    
+                </div>
             </div>
         )
     }
