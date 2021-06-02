@@ -18,6 +18,9 @@ body{
   padding: 0.8em;
 }
 
+.image-tab{
+height: 60px;
+}
 .images{
   width: 100%;
 }
