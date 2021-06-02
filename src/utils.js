@@ -7,7 +7,6 @@ export const getDiscoveryAPI = (params) => {
     for( let key in params) {
         dynamicParams += '&' + key + '=' + params[key];
     }
-    console.log(dynamicParams);
     return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&with_crew=138${dynamicParams}`)
         .then(res => res.json());
 }
