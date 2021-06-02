@@ -16,9 +16,11 @@ class Search extends React.Component {
         fetch(`https://api.themoviedb.org/3/person/${TARANTINO_ID}/movie_credits?api_key=${API_KEY}`)
             .then((stream) => stream.json())
             .then((res) => {
-                if (res && res.crew) {
+                if (res && res.crew && res.cast) {
+
                     const moviesFound = {}
-                    const results = res.crew.filter(movie => {
+                    const allMovies = [...res.cast, ...res.crew]
+                    const results = allMovies.filter(movie => {
                         if (moviesFound[movie.original_title]) {
                             return false
                         }
@@ -34,9 +36,9 @@ class Search extends React.Component {
                             poster: movie.poster_path,
                             release_date: movie.release_date,
                             popularity: movie.popularity
-
                         }
                     })
+                    console.log("filterdResults", filterdResults)
                     this.setState(
                         {
                             resultTMDB: filterdResults,
@@ -62,7 +64,7 @@ class Search extends React.Component {
                 action key={movie.id}
                 onClick={() => { this.onResultSelected(movie.id, movie.name) }}>
                 <div className="movie-tab">
-                    <img className="image-tab" src={poster}/>
+                    <img className="image-tab" src={poster} />
                     <div className="movie-name-tab">{movie.name}</div>
                 </div>
             </ListGroup.Item>)
