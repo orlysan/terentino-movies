@@ -88,9 +88,9 @@ class Search extends React.Component {
                 <Form.Control
                     type="text"
                     value={this.state.name}
-                    placeholder="Search for a movie"
+                    placeholder="Search for a movie" 
                     onChange={(e) => { this.onSearchChanged(e.target.value) }} />
-                <ListGroup className="movies-search">
+                <ListGroup className="movies-search"  onMouseLeave={() => this.setState({ filteredMovies: "" })}>
                     {this.state.filteredMovies}
                 </ListGroup>
             </Form.Group>
