@@ -38,7 +38,6 @@ class Search extends React.Component {
                             popularity: movie.popularity
                         }
                     })
-                    console.log("filterdResults", filterdResults)
                     this.setState(
                         {
                             resultTMDB: filterdResults,
