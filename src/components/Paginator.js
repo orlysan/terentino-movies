@@ -82,13 +82,6 @@ class Paginator extends React.Component {
         }
 
 
-
-
-
-        // i = should not be 1, instead currentPage - 1
-        // We need to make sure we are not displaying page under 1
-        // we need to make sure we are not displaying a page that does not exist
-
         return (
             <div className="paginator-container">
                 <Pagination>
@@ -99,7 +92,6 @@ class Paginator extends React.Component {
                             key={number}
                             activeLabel=""
                             active={number === this.props.currentPage}
-                            className="sr-only"
                             onClick={() => this.choosePage(number)}>
                             {number}
                         </Pagination.Item>
