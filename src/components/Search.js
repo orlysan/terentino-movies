@@ -13,58 +13,61 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
-       this.getMoviesList();
+        this.getMoviesList();
     }
 
-    getMoviesList=()=>{
+    getMoviesList = () => {
         fetch(`https://api.themoviedb.org/3/person/${TARANTINO_ID}/movie_credits?api_key=${API_KEY}`)
-        .then((stream) => stream.json())
-        .then((res) => {
-            if (res && res.crew && res.cast) {
+            .then((stream) => stream.json())
+            .then((res) => {
+                if (res && res.crew && res.cast) {
 
-                const moviesFound = {}
-                const allMovies = [...res.cast, ...res.crew]
-                const results = allMovies.filter(movie => {
-                    if (moviesFound[movie.original_title]) {
-                        return false
-                    }
-                    else {
-                        moviesFound[movie.original_title] = true;
-                        return true
-                    }
-                })
-                const filterdResults = results.map(movie => {
-                    return {
-                        name: movie.original_title,
-                        id: movie.id,
-                        poster: movie.poster_path,
-                        release_date: movie.release_date,
-                        popularity: movie.popularity
-                    }
-                })
-                this.setState(
-                    {
-                        resultTMDB: filterdResults,
-                    }
-                )
-            }
-        })
+                    const moviesFound = {}
+                    const allMovies = [...res.cast, ...res.crew]
+                    const results = allMovies.filter(movie => {
+                        if (moviesFound[movie.original_title]) {
+                            return false
+                        }
+                        else {
+                            moviesFound[movie.original_title] = true;
+                            return true
+                        }
+                    })
+                    const filterdResults = results.map(movie => {
+                        return {
+                            name: movie.original_title,
+                            id: movie.id,
+                            poster: movie.poster_path,
+                            release_date: movie.release_date,
+                            popularity: movie.popularity
+                        }
+                    })
+                    this.setState(
+                        {
+                            resultTMDB: filterdResults,
+                        }
+                    )
+                }
+            })
     }
 
     onSearchChanged = (filter) => {
         const list = this.state.resultTMDB.filter(movie => {
             return movie.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
         })
-        const filteredMovies = list.map(movie => {
-            return this.createMovieTab(movie)
-        })
+        const filteredMovies = []
+
+        if(list){for (let i = 0; i < 10 && i<list.length; i++) {
+            filteredMovies.push(this.createMovieTab(list[i]))
+        }
 
         this.setState({
+            value:filter,
             filteredMovies: filteredMovies
-        })
+        })}
     }
 
-    createMovieTab=(movie)=>{
+    createMovieTab = (movie) => {
         let poster;
         if (!movie.poster) {
             poster = TARANTINO_IMAGE
@@ -83,7 +86,6 @@ class Search extends React.Component {
 
     onResultSelected = (id, name) => {
         this.setState({
-            value:name,
             name: "",
             filteredMovies: ""
         })
@@ -96,9 +98,9 @@ class Search extends React.Component {
                 <Form.Control
                     type="text"
                     value={this.state.value}
-                    placeholder="Search for a movie" 
+                    placeholder="Search for a movie"
                     onChange={(e) => { this.onSearchChanged(e.target.value) }} />
-                <ListGroup className="movies-search"  onMouseLeave={() => this.setState({ filteredMovies: "" })}>
+                <ListGroup className="movies-search" onMouseLeave={() => this.setState({ filteredMovies: "",value:"" })}>
                     {this.state.filteredMovies}
                 </ListGroup>
             </Form.Group>
