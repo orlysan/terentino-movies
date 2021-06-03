@@ -15,6 +15,7 @@ class Movie extends React.Component{
     }
     //
     componentDidMount = () => {
+        this.props.toggleSpinner(true);
         fetch(`https://api.themoviedb.org/3/movie/${this.id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`)
         .then((res) => res.json())
         .then((tmdbData) => {
@@ -33,6 +34,7 @@ class Movie extends React.Component{
             return imdbId;
         })
          .then( (imdbId) => {
+            
             fetch(`http://www.omdbapi.com/?apikey=${API_KEY_OMDB}&i=${imdbId}`)
             .then(res => res.json())
             .then( (omdbData) => {
@@ -49,7 +51,7 @@ class Movie extends React.Component{
                     year: (omdbData.Year)?omdbData.Year: "unknown",
                     runTime:(omdbData.Runtime)?omdbData.Runtime: "unknown",
                 }
-                console.log(omdbObj);
+                this.props.toggleSpinner(false);
                 this.setState({
                     omdbInfo: omdbObj
                 })

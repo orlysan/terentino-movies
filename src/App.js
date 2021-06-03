@@ -14,16 +14,21 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            showSpinner: false,
         }
     } 
+    toggleSpinner = (showSpinner) => {
+        this.setState(
+            {showSpinner}
+        )
+    }
   render(){
         return (
             <HashRouter>
                 <ScrollToTop/>
                 <NavbarMovies />
                 <Route exact path="/">
-                    <Home></Home>
+                    <Home toggleSpinner={this.toggleSpinner}></Home>
                 </Route>
                 <Route exact path="/about">
                     <About></About>
@@ -32,7 +37,7 @@ class App extends React.Component {
                     <AdvancedSearch></AdvancedSearch>
                 </Route>
                 <Route exact path="/movie/:id">
-                    <Movie></Movie>
+                    <Movie toggleSpinner={this.toggleSpinner}></Movie>
                 </Route>
             </HashRouter>
         )
