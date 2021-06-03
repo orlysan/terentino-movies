@@ -18,7 +18,7 @@ class Paginator extends React.Component {
 
     prevPage = () => {
         const current = this.props.currentPage;
-        if (current === 1) {
+        if (current <= 1) {
             return
         }
         else {
@@ -28,7 +28,7 @@ class Paginator extends React.Component {
 
     nextPage = () => {
         const current = this.props.currentPage;
-        if (current === this.props.numOfPages) {
+        if (current >= this.props.numOfPages) {
             return
         }
         else {
@@ -55,46 +55,16 @@ class Paginator extends React.Component {
         //create the paginator
     
         let count = 0;
-        let pageToSet = currentPage <=1 ? currentPage : currentPage-1;
-        while(count <= 3 && pageToSet < numOfPages){
+        let pageToSet = currentPage == numOfPages ? currentPage-2 : currentPage-1;
+        while(count < 3 && pageToSet <= numOfPages){
             if(pageToSet > 0){
                 count++;
                 pages.push(pageToSet);
             }
-            this.pageToTest++
+            pageToSet++
         }
         console.log(pages )
-        // if (currentPage === numOfPages) {
-        //     for (let i = currentPage - 2; i <= numOfPages; i++) {
-        //         pages.push(i);
-        //     }
-        // }
-
-        // else if (currentPage <= 2) {
-        //     for (let i = 1; i <= 3; i++) {
-        //         pages.push(i);
-        //     }
-        // }
-
-        // else if (currentPage >= 3) {
-        //     for (let i = currentPage - 1; i <= currentPage + 1; i++) {
-        //         pages.push(i);
-        //     }
-        // }
-
-        // else if (currentPage === numOfPages && numOfPages > 2) {
-        //     for (let i = currentPage - 2; i <= numOfPages; i++) {
-        //         pages.push(i);
-        //     }
-        // }
-
-
-        // else {
-        //     for (let i = currentPage - 2; i = numOfPages + 1; i++) {
-        //         pages.push(i);
-        //     }
-        // }
-
+     
 
         return (
             <div className="paginator-container">
