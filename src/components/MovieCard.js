@@ -50,13 +50,14 @@ export default class MovieCard extends React.Component {
                     <BackSide
                     style={{height, width, backgroundColor: color}}
                     >
+                        <a href = {`#/movie/${link}`}>
                         <div style={{height: "85%"}}>
                             <img src={src} alt="" style={{opacity: "0.6"}}></img>
                         </div>
                         <p>
                             {name}
                         </p>
-                        <a href = {`#/movie/${link}`}>
+                        
                         <button className="detailed-button" style={{backgroundColor: color}}>
                                 Details
                                 </button>
