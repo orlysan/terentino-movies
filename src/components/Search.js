@@ -13,6 +13,10 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
+        this.getMoviesList();
+    }
+
+    getMoviesList = () => {
         fetch(`https://api.themoviedb.org/3/person/${TARANTINO_ID}/movie_credits?api_key=${API_KEY}`)
             .then((stream) => stream.json())
             .then((res) => {
@@ -51,27 +55,35 @@ class Search extends React.Component {
         const list = this.state.resultTMDB.filter(movie => {
             return movie.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
         })
-        const filteredMovies = list.map(movie => {
-            let poster;
-            if (!movie.poster) {
-                poster = TARANTINO_IMAGE
-            } else {
-                poster = `https://www.themoviedb.org/t/p/w500${movie.poster}`
+        const filteredMovies = []
+
+        if (list) {
+            for (let i = 0; i < 10 && i < list.length; i++) {
+                filteredMovies.push(this.createMovieTab(list[i]))
             }
 
-            return (<ListGroup.Item
-                action key={movie.id}
-                onClick={() => { this.onResultSelected(movie.id, movie.name) }}>
-                <div className="movie-tab">
-                    <img className="image-tab" src={poster} />
-                    <div className="movie-name-tab">{movie.name}</div>
-                </div>
-            </ListGroup.Item>)
-        })
+            this.setState({
+                value: filter,
+                filteredMovies: filteredMovies
+            })
+        }
+    }
 
-        this.setState({
-            filteredMovies: filteredMovies
-        })
+    createMovieTab = (movie) => {
+        let poster;
+        if (!movie.poster) {
+            poster = TARANTINO_IMAGE
+        } else {
+            poster = `https://www.themoviedb.org/t/p/w500${movie.poster}`
+        }
+        return (<ListGroup.Item
+            action key={movie.id}
+            onClick={() => { this.onResultSelected(movie.id, movie.name) }}>
+            <div className="movie-tab">
+                <img className="image-tab" src={poster} />
+                <div className="movie-name-tab">{movie.name}</div>
+            </div>
+        </ListGroup.Item>)
     }
 
     onResultSelected = (id, name) => {
@@ -87,10 +99,10 @@ class Search extends React.Component {
             <Form.Group>
                 <Form.Control
                     type="text"
-                    value={this.state.name}
+                    value={this.state.value}
                     placeholder="Search for a movie"
                     onChange={(e) => { this.onSearchChanged(e.target.value) }} />
-                <ListGroup className="movies-search">
+                <ListGroup className="movies-search" onMouseLeave={() => this.setState({ filteredMovies: "", value: "" })}>
                     {this.state.filteredMovies}
                 </ListGroup>
             </Form.Group>
