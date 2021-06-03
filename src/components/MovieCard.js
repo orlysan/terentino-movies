@@ -17,7 +17,7 @@ export default class MovieCard extends React.Component {
     render() {
         const height = "300px";
         const  width = "210px";
-        const color = this.props.color || "#c2d9ff";
+        const color = this.props.color || "#f47a11";
  
         const src = 'https://image.tmdb.org/t/p/w500/' +this.props.movDetails.movImgSrc;
         const name = this.props.movDetails.movName;
