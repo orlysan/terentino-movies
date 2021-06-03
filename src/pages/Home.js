@@ -28,7 +28,6 @@ class Home extends React.Component{
         .then((tmdbData) => {
             const page = tmdbData.page
             const tmdbCards = moviesToCards (tmdbData.results)
-        console.log(tmdbData)
             this.setState({
                 cards: tmdbCards,
                 numOfPages: tmdbData.total_pages
