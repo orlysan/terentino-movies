@@ -1,0 +1,7 @@
+.p-home .jumbotron {
+    background: rgb(244,206,28);
+background: linear-gradient(14deg, rgba(244,206,28,1) 0%, rgba(244,206,28,1) 26%, rgba(205,83,19,1) 100%);
+display: flex;
+
+
+}
