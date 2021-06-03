@@ -12,7 +12,7 @@ export default class Gallery extends React.Component {
             />    
         </div>);
         return (
-            <div style={{display:"flex", flexWrap:"wrap",justifyContent:"center"}}>
+            <div className="container" style={{display:"flex", flexWrap:"wrap",justifyContent:"space-between"}}>
                 {cards}
             </div>
         )

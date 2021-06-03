@@ -1,0 +1,32 @@
+.gallery-qt > img{
+    width: 10rem;
+    height: 10rem;
+    margin: 0.5rem;
+    
+}
+
+.gallery-qt > img:hover {
+    opacity: 0.3;
+}
+
+.gallery-qt{
+    margin:auto;
+}
+
+.more-info {
+   width: 55%;
+   margin:auto;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.about-jumbo > h1{
+    font-size: 3rem;
+}
+
+.about-jumbo > p{
+    font-size: 2rem;
+    color:rgb(59, 8, 8);
+}

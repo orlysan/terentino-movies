@@ -4,12 +4,10 @@ import React from 'react';
 import Home from './pages/Home';
 import About from './pages/About';
 import AdvancedSearch from './pages/AdvancedSearch';
-import Highest from './pages/Highest';
 import Movie from './pages/Movie';
-import NewestMovies from './pages/NewestMovies';
-import SearchResult from './pages/SearchResult';
 import { HashRouter, Route } from 'react-router-dom';
 import NavbarMovies from './components/NavbarMovies';
+import ScrollToTop from './components/ScrollToTops';
 
 
 class App extends React.Component {
@@ -18,35 +16,38 @@ class App extends React.Component {
         this.state = {
 
         }
-    }
+    } 
+  render(){
 
-    render() {
-        return <HashRouter>
+    //paginator 
+    const { cards , cardsPerPages} = this.state
 
-            <NavbarMovies />
-
-            <Route exact path="/">
-                <Home></Home>
-            </Route>
-            <Route exact path="/about">
-                <About></About>
-            </Route>
-            <Route exact path="/advanced-search">
-                <AdvancedSearch></AdvancedSearch>
-            </Route>
-            <Route exact path="/highest">
-                <Highest></Highest>
-            </Route>
-            <Route exact path="/movie/:id">
-                <Movie></Movie>
-            </Route>
-            <Route exact path="/newest-movies">
-                <NewestMovies></NewestMovies>
-            </Route>
-            <Route exact path="/search-result">
-                <SearchResult></SearchResult>
-            </Route>
-        </HashRouter>
+    const renderCard = cards.map((card, index) => {
+        return <p key={index}>{card}</p>
+    })
+    
+    //get current cards
+    const indexOfLastCard = this.state.currentPage * cardsPerPages;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPages ;
+    const currentCards = renderCard.slice(indexOfFirstCard, indexOfLastCard);
+        return (
+            <HashRouter>
+                <ScrollToTop/>
+                <NavbarMovies />
+                <Route exact path="/">
+                    <Home></Home>
+                </Route>
+                <Route exact path="/about">
+                    <About></About>
+                </Route>
+                <Route exact path="/advanced-search">
+                    <AdvancedSearch></AdvancedSearch>
+                </Route>
+                <Route exact path="/movie/:id">
+                    <Movie></Movie>
+                </Route>
+            </HashRouter>
+        )
     }
 }
 

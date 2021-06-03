@@ -39,7 +39,7 @@ height: 60px;
   border-radius: 5px;
   
 }
-.carousel-caption  h3,p {
+.carousel-caption  h3, .carousel-caption p {
   color: rgb(244,206,17)  ;
 }
 
