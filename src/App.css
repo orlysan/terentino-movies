@@ -1,23 +1,35 @@
 body{
   background-color: #18161b !important;
+  background-color: #18161b !important;
 }
 .App {
   text-align: center;
 }
+
 
 .movies-search{
   position: absolute;
 }
 
 .movie-tab{
+  
   display: flex;
   text-align: center;
+}
+
+.movies-search{
+  z-index: 1000; 
+  height: 100%;
+  /* overflow-y: scroll; */
 }
 
 .movie-name-tab{
   padding: 0.8em;
 }
 
+*{
+  font-family: fangsong !important;
+}
 .image-tab{
 height: 60px;
 }
@@ -37,4 +49,8 @@ height: 60px;
 
 .carousel-indicators .active,li {
   background-color: rgb(244,206,17) !important;
+}
+
+.sr-only{
+  color: rgb(244,206,17) !important;
 }

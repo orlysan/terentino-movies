@@ -5,10 +5,11 @@ import './Home.css'
 import { API_KEY, TARANTINO_ID } from "../constants";
 import { moviesToCards } from "../utils";
 import Paginator from "../components/Paginator";
+import { Container } from "react-bootstrap";
 
- 
-class Home extends React.Component{
-    constructor(props){
+
+class Home extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
             cards:[],
@@ -16,7 +17,7 @@ class Home extends React.Component{
             numOfPages :""
         };
     }
-    
+
     componentDidMount = () => {
 
         // All this move to a function 
@@ -42,39 +43,37 @@ class Home extends React.Component{
 
     }
 
-    
     render() {
         return (
             <div className="p-home">
                 <div className="jumbotron">
-                    <div>
-                        <h1 className="display-4 mx-3">Quentin Tarantino</h1>    
-                        <hr className="my-4"/>
-                        <p className="lead mx-3">I want to risk hitting my head on the ceiling of my talent. I want to really test it out and say: Ok you’re not that good. You just reached the level here. I don’t ever want to fail, but I want to risk failure every time out of the gate</p>  
-                   </div>
-                   <div className="float-me-right">
-                        <img src="https://w7.pngwing.com/pngs/320/251/png-transparent-quentin-tarantino-centro-andaluz-de-arte-contemporaneo-sevilla-pulp-fiction-t-shirt-hoodie-t-shirt-white-hand-monochrome-thumbnail.png" alt="Quentin Tarantino" />
-                    </div>               
+                    <h1 className="display-4 mx-3">Quentin Tarantino</h1>
+                    <hr className="my-4" />
+                    <p className="lead mx-3">I want to risk hitting my head on the ceiling of my talent. I want to really test it out and say: Ok you’re not that good. You just reached the level here. I don’t ever want to fail, but I want to risk failure every time out of the gate</p>
                 </div>
-                <div className="container">
-                <div className="custom-courusel">
-                    <ImageCarusel/>
+                <div className="float-me-right">
+                    <img src="https://w7.pngwing.com/pngs/320/251/png-transparent-quentin-tarantino-centro-andaluz-de-arte-contemporaneo-sevilla-pulp-fiction-t-shirt-hoodie-t-shirt-white-hand-monochrome-thumbnail.png" alt="Quentin Tarantino" />
                 </div>
-                </div>
-                <div className="custom-gallery">
-                    <Gallery
-                     cards={this.state.cards}
-                    />
-                </div>
-                <div className="custom-paginator">
-                    <Paginator
-                       choosePage={this.choosePage}
-                       currentPage={this.state.pageNum} 
-                       numOfPages={this.state.numOfPages}
-                    />
-                </div>    
-                
+
+                <Container>
+                    <div className="custom-courusel">
+                        <ImageCarusel />
+                    </div>
+                    <div className="custom-gallery">
+                        <Gallery
+                            cards={this.state.cards}
+                        />
+                    </div>
+                    <div className="custom-paginator">
+                        <Paginator
+                        choosePage={this.choosePage}
+                        currentPage={this.state.pageNum} 
+                        numOfPages={this.state.numOfPages}
+                        />
+                    </div>  
+                </Container>
             </div>
+
         )
     }
 }
