@@ -2,6 +2,35 @@
     background: rgb(244,206,28);
 background: linear-gradient(14deg, rgba(244,206,28,1) 0%, rgba(244,206,28,1) 26%, rgba(205,83,19,1) 100%);
 display: flex;
+position: relative;
+justify-content: space-between;
+}
 
+.t-man{
+    position: absolute;
+    height: 100%;
+    display: block;
+    right: 0;
+}
 
+.jumbotron{
+    padding: 0;
+
+}
+
+.about-text{
+    width: 70%;
+    padding: 1rem;
+}   
+
+@media only screen and (max-width: 800px){
+    .about-text{
+        width: 60%;
+        padding: 1rem;
+    }   
+}
+
+.lead {
+    font-size: 1.7rem;
+    font-weight: 400;
 }

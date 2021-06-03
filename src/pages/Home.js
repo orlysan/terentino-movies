@@ -45,14 +45,12 @@ class Home extends React.Component{
         return (
             <div className="p-home">
                 <div className="jumbotron">
-                    <div>
+                    <div className="about-text">
                         <h1 className="display-4 mx-3">Quentin Tarantino</h1>    
                         <hr className="my-4"/>
                         <p className="lead mx-3">I want to risk hitting my head on the ceiling of my talent. I want to really test it out and say: Ok you’re not that good. You just reached the level here. I don’t ever want to fail, but I want to risk failure every time out of the gate</p>  
                    </div>
-                   <div className="float-me-right">
-                        <img src="https://w7.pngwing.com/pngs/320/251/png-transparent-quentin-tarantino-centro-andaluz-de-arte-contemporaneo-sevilla-pulp-fiction-t-shirt-hoodie-t-shirt-white-hand-monochrome-thumbnail.png" alt="Quentin Tarantino" />
-                    </div>               
+                   <img className="t-man"src={process.env.PUBLIC_URL + " t.png"} alt="Logo" />              
                 </div>
                 <div className="container">
                 <div className="custom-courusel">

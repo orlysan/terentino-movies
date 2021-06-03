@@ -6,8 +6,8 @@ import Search from './Search';
 class NavbarMovies extends React.Component {
     render() {
         return (
-            <Navbar bg="light" expand="lg" className="movies-navbar">
-                <Navbar.Brand href="#/">MovieApp</Navbar.Brand>
+            <Navbar bg="dark" variant="dark" expand="lg" className="movies-navbar">
+                <Navbar.Brand href="#/"><img className="logo" src={process.env.PUBLIC_URL + "logo.jpg"} alt="Logo" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
