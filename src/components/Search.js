@@ -57,14 +57,16 @@ class Search extends React.Component {
         })
         const filteredMovies = []
 
-        if(list){for (let i = 0; i < 10 && i<list.length; i++) {
-            filteredMovies.push(this.createMovieTab(list[i]))
-        }
+        if (list) {
+            for (let i = 0; i < 10 && i < list.length; i++) {
+                filteredMovies.push(this.createMovieTab(list[i]))
+            }
 
-        this.setState({
-            value:filter,
-            filteredMovies: filteredMovies
-        })}
+            this.setState({
+                value: filter,
+                filteredMovies: filteredMovies
+            })
+        }
     }
 
     createMovieTab = (movie) => {
@@ -100,7 +102,7 @@ class Search extends React.Component {
                     value={this.state.value}
                     placeholder="Search for a movie"
                     onChange={(e) => { this.onSearchChanged(e.target.value) }} />
-                <ListGroup className="movies-search" onMouseLeave={() => this.setState({ filteredMovies: "",value:"" })}>
+                <ListGroup className="movies-search" onMouseLeave={() => this.setState({ filteredMovies: "", value: "" })}>
                     {this.state.filteredMovies}
                 </ListGroup>
             </Form.Group>
