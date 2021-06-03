@@ -9,11 +9,11 @@ class Movie extends React.Component{
         super(props);
         this.id = this.props.match.params.id
         this.state = {
-            tmdbInfo:{},
-            omdbInfo:{}
+            tmdbInfo:null,
+            omdbInfo:null
         };
     }
-    //
+    
     componentDidMount = () => {
         this.props.toggleSpinner(true);
         fetch(`https://api.themoviedb.org/3/movie/${this.id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`)
@@ -60,8 +60,8 @@ class Movie extends React.Component{
 }
     render() {
         let template = '';
-        if (this.state.tmdbInfo === undefined||this.state.omdbInfo === undefined ){
-             template = <div>loading</div>
+        if (! this.state.tmdbInfo || ! this.state.omdbInfo ){
+             return <div>Loading...</div>
         }
         else{
             template = (
@@ -70,7 +70,7 @@ class Movie extends React.Component{
                                 <h1 className="display-3 text-center">{this.state.tmdbInfo.title}</h1>
                                 <p className="display-6 text-center">{this.state.tmdbInfo.tagline}</p>
                                 <hr className="my-3"/>
-                                <p className=" lead text-center">Directed by: {this.state.omdbInfo.director} </p>
+                                <p className="lead text-center">Directed by: {this.state.omdbInfo.director} </p>
                             </div>
                             <div className="container">
                                 <Row>

@@ -1,6 +1,6 @@
 {
   "name": "movies-tarantino",
-  "homepage": "http://skarlinski.github.io/terentino-movies",
+  "homepage": "http://skarlinski.github.io/terentino-movies/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
