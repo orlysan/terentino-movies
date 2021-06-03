@@ -19,17 +19,7 @@ class App extends React.Component {
     } 
   render(){
 
-    //paginator 
-    const { cards , cardsPerPages} = this.state
-
-    const renderCard = cards.map((card, index) => {
-        return <p key={index}>{card}</p>
-    })
-    
-    //get current cards
-    const indexOfLastCard = this.state.currentPage * cardsPerPages;
-    const indexOfFirstCard = indexOfLastCard - cardsPerPages ;
-    const currentCards = renderCard.slice(indexOfFirstCard, indexOfLastCard);
+  
         return (
             <HashRouter>
                 <ScrollToTop/>

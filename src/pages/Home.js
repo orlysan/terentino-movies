@@ -4,6 +4,7 @@ import Gallery from '../components/Gallery'
 import './Home.css'
 import { API_KEY, TARANTINO_ID } from "../constants";
 import { moviesToCards } from "../utils";
+import Paginator from "../components/Paginator";
 
  
 class Home extends React.Component{
@@ -12,6 +13,7 @@ class Home extends React.Component{
         this.state = {
             cards:[],
             pageNum:1,
+            numOfPages :""
         };
     }
     
@@ -26,21 +28,22 @@ class Home extends React.Component{
         .then((tmdbData) => {
             const page = tmdbData.page
             const tmdbCards = moviesToCards (tmdbData.results)
-        
-            
+        console.log(tmdbData)
             this.setState({
                 cards: tmdbCards,
-                
+                numOfPages: tmdbData.total_pages
             })
         })
     }
-    changePage = (page) => {
+    choosePage = (page) => {
         this.setState({
             pageNum: page
         })
         this.getMovies(page);
 
     }
+
+    
     render() {
         return (
             <div className="p-home">
@@ -65,9 +68,11 @@ class Home extends React.Component{
                     />
                 </div>
                 <div className="custom-paginator">
-                    {/* <Paginator
-                       changePage={this.changePage} 
-                    /> */}
+                    <Paginator
+                       choosePage={this.choosePage}
+                       currentPage={this.state.pageNum} 
+                       numOfPages={this.state.numOfPages}
+                    />
                 </div>    
                 
             </div>

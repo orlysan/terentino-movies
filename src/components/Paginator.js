@@ -63,12 +63,12 @@ class Paginator extends React.Component {
             }
             pageToSet++
         }
-        console.log(pages )
+        console.log(pages)
      
 
         return (
             <div className="paginator-container">
-                <Pagination>
+                <Pagination className="paginator-el">
                     {firstEl}
                     {prevEl}
                     {pages.map(number => (
