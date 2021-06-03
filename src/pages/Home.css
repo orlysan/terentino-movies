@@ -1,7 +1,7 @@
 .p-home .jumbotron {
     background: rgb(244,206,28);
 background: linear-gradient(14deg, rgba(244,206,28,1) 0%, rgba(244,206,28,1) 26%, rgba(205,83,19,1) 100%);
-display: flex;
+
 position: relative;
 justify-content: space-between;
 }
@@ -13,13 +13,17 @@ justify-content: space-between;
     right: 0;
 }
 
+
 .jumbotron{
     padding: 0;
-
+    
 }
-
+.header-text-wrapper{
+    width: 70vw;
+    padding:20px;
+}
 .about-text{
-    width: 70%;
+    width: 30vw;
     padding: 1rem;
 }   
 

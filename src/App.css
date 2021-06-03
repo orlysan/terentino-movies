@@ -54,3 +54,10 @@ height: 60px;
 .sr-only{
   color: rgb(244,206,17) !important;
 }
+
+.tarantino-img{
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  top: 0;
+}
