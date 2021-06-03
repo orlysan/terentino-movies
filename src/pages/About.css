@@ -22,6 +22,11 @@ a:hover {
     text-decoration: none;
 }
 
-.about-jumbo h1{
+.about-jumbo > h1{
+    font-size: 3rem;
+}
+
+.about-jumbo > p{
     font-size: 2rem;
+    color:rgb(59, 8, 8);
 }
