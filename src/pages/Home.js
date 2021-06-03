@@ -5,11 +5,7 @@ import './Home.css'
 import { API_KEY, TARANTINO_ID } from "../constants";
 import { moviesToCards } from "../utils";
 
-    //         const src = this.props.movDetails.movImgSrc;
-    //         const name = this.props.movDetails.movName;
-    //         const rate = this.props.movDetails.movRate;
-    //         const year = this.props.movDetails.movYear;
-    //         const link = this.props.movDetails.movLink;
+ 
 class Home extends React.Component{
     constructor(props){
         super(props);
@@ -49,10 +45,14 @@ class Home extends React.Component{
         return (
             <div className="p-home">
                 <div className="jumbotron">
-                    <h1 className="display-4">Hello, world!</h1>
-                    <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                    <hr className="my-4"/>
-                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>  
+                    <div>
+                        <h1 className="display-4 mx-3">Quentin Tarantino</h1>    
+                        <hr className="my-4"/>
+                        <p className="lead mx-3">I want to risk hitting my head on the ceiling of my talent. I want to really test it out and say: Ok you’re not that good. You just reached the level here. I don’t ever want to fail, but I want to risk failure every time out of the gate</p>  
+                   </div>
+                   <div className="float-me-right">
+                        <img src="https://w7.pngwing.com/pngs/320/251/png-transparent-quentin-tarantino-centro-andaluz-de-arte-contemporaneo-sevilla-pulp-fiction-t-shirt-hoodie-t-shirt-white-hand-monochrome-thumbnail.png" alt="Quentin Tarantino" />
+                    </div>               
                 </div>
                 <div className="container">
                 <div className="custom-courusel">
@@ -65,7 +65,9 @@ class Home extends React.Component{
                     />
                 </div>
                 <div className="custom-paginator">
-                    PAGINETOR
+                    {/* <Paginator
+                       changePage={this.changePage} 
+                    /> */}
                 </div>    
                 
             </div>
